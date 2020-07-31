@@ -3,6 +3,7 @@ import unittest
 
 # The number of columns to use during test recording and playback
 NUM_COLS = '80'
+GOMP_PATH = '../gomp/gomp.py'
 
 class GOMPIntegrationTestCase(unittest.TestCase):
 
@@ -15,7 +16,7 @@ class GOMPIntegrationTestCase(unittest.TestCase):
         run(['sh', 'tearDown.sh'])
 
     def test_feature_main(self):
-        gomp_output = run(['python3', '../gomp.py', 'feature', 'main', '--cols', NUM_COLS],
+        gomp_output = run(['python3', GOMP_PATH, 'feature', 'main', '--cols', NUM_COLS],
                           capture_output=True,
                           universal_newlines=True,
                           check=False,
@@ -26,7 +27,7 @@ class GOMPIntegrationTestCase(unittest.TestCase):
         self.assertEqual(gomp_output, expected_output)
 
     def test_recut_feature_main(self):
-        gomp_output = run(['python3', '../gomp.py', 'feature', 'main', '--recut', '--cols', NUM_COLS],
+        gomp_output = run(['python3', GOMP_PATH, 'feature', 'main', '--recut', '--cols', NUM_COLS],
                           capture_output=True,
                           universal_newlines=True,
                           check=False,
@@ -37,7 +38,7 @@ class GOMPIntegrationTestCase(unittest.TestCase):
         self.assertEqual(gomp_output, expected_output)
 
     def test_key_feature_main(self):
-        gomp_output = run(['python3', '../gomp.py', 'feature', 'main', '--key', '--cols', NUM_COLS],
+        gomp_output = run(['python3', GOMP_PATH, 'feature', 'main', '--key', '--cols', NUM_COLS],
                           capture_output=True,
                           universal_newlines=True,
                           check=False,
@@ -48,7 +49,7 @@ class GOMPIntegrationTestCase(unittest.TestCase):
         self.assertEqual(gomp_output, expected_output)
 
     def test_help(self):
-        gomp_output = run(['python3', '../gomp.py', '-h'],
+        gomp_output = run(['python3', GOMP_PATH, '-h'],
                           capture_output=True,
                           universal_newlines=True,
                           check=False,
